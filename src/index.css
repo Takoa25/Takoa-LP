@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s cubic-bezier(0.21, 0.45, 0.32, 0.9) forwards;
+}
+
+/* Ensure images don't have weird gaps */
+img {
+  display: block;
+}
+
+/* Selection color */
+::selection {
+  background: #F97316;
+  color: white;
+}

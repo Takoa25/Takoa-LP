@@ -1,0 +1,33 @@
+# Takoa Digital
+
+> Otimizando a presença digital de clínicas e profissionais da saúde com sites de alta conversão.
+
+## Quem somos
+Somos uma agência digital especializada no setor de saúde (HealthCare). Focamos no desenvolvimento de websites profissionais, landing pages de alta conversão e adequação à Lei Geral de Proteção de Dados (LGPD).
+
+## Nossos Serviços
+
+### Desenvolvimento Web
+- Sites Institucionais para Clínicas
+- Landing Pages para Tratamentos Específicos
+- Design Responsivo (Mobile-First)
+- Otimização de Performance (Core Web Vitals)
+
+### Adequação LGPD
+- Implementação de Banners de Cookies Granulares
+- Criação de Políticas de Privacidade Personalizadas
+- Termos de Uso e Serviço
+- Auditoria de Segurança Básica
+
+### Design & Branding
+- Identidade Visual para Clínicas
+- UI/UX Design Focado em Conversão
+
+## Informações de Contato
+- **Site:** https://takoadigital.com
+- **E-mail:** takoadigital@gmail.com
+- **WhatsApp:** +55 19 99580-9849
+
+## Links Úteis
+- [Política de Privacidade](https://takoadigital.com/privacy)
+- [Termos de Uso](https://takoadigital.com/terms)
