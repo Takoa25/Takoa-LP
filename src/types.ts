@@ -32,6 +32,7 @@ export interface Content {
       highlight: string;
       whatsapp: string;
       sidebarBackground: string;
+      sidebarBackgroundMobile: string;
       sidebarTitle: string;
       sidebarHighlight: string;
       menuHover: string;

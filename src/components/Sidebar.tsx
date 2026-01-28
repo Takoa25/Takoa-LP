@@ -1,32 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { CONTENT } from '../content';
-import { WhatsAppIcon } from './Icons';
 import TakoaLogo from './TakoaLogo';
 import { Typewriter } from './Typewriter';
 import { WhatsappContactButton } from './WhatsappContactButton';
-
 import { AnimatePresence } from 'framer-motion';
+import { Starfield } from './ui/starfield-1';
 
 interface SidebarProps {
   isLanded?: boolean;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isLanded }) => {
+  const [bgColor, setBgColor] = React.useState(CONTENT.theme.colors.sidebarBackgroundMobile);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setBgColor(window.innerWidth >= 1024
+        ? CONTENT.theme.colors.sidebarBackground
+        : CONTENT.theme.colors.sidebarBackgroundMobile);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div
       id="hero"
-      className="flex flex-col w-full min-h-[100dvh] lg:h-screen lg:fixed lg:left-0 lg:top-0 lg:w-[33.33%] p-8 md:p-14 lg:p-10 z-[100] overflow-hidden"
-      style={{ backgroundColor: CONTENT.theme.colors.sidebarBackground }}
+      className="relative flex flex-col w-full min-h-[100dvh] lg:h-screen lg:fixed lg:left-0 lg:top-0 lg:w-[33.33%] p-8 md:p-14 lg:p-10 z-[100] overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor: bgColor }}
     >
-      {/* Container Superior: Logo */}
-      <div className="flex-none">
+      {/* Starfield Background Layer - Visible ONLY on mobile/tablet (< lg) */}
+      <div className="absolute inset-0 z-0 lg:hidden user-select-none">
+        <Starfield
+          starColor="rgba(255, 255, 255, 0.8)"
+          bgColor={CONTENT.theme.colors.sidebarBackgroundMobile}
+          quantity={160}
+          speed={0.5}
+          clickToWarp={true}
+          tiltAdjust={true}
+          mouseAdjust={true}
+        />
+      </div>
+
+      {/* Container Superior: Logo - z-index higher than background */}
+      <div className="flex-none z-10">
         <a href="/" className="block w-[clamp(110px,8vw,150px)]">
           <TakoaLogo className="w-full h-auto" />
         </a>
       </div>
 
-      {/* Container Central: Headline, Subheadline & CTA */}
-      <div className="flex-1 flex flex-col justify-center gap-8 lg:gap-12 animate-fade-up">
+      {/* Container Central: Headline, Subheadline & CTA - z-index higher than background */}
+      <div className="flex-1 flex flex-col justify-center gap-8 lg:gap-12 animate-fade-up z-10">
         <h1
           className="text-[clamp(3.5rem,5.5vh,5rem)] font-semibold leading-[1.05] tracking-tight"
           style={{ fontFamily: CONTENT.theme.fonts.heading, color: CONTENT.theme.colors.sidebarTitle }}

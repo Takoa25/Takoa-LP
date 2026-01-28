@@ -9,6 +9,7 @@ export const CONTENT: Content = {
             accent: "#3B82F6",
             background: "#0D0D0D",
             sidebarBackground: "#1A1A1A",
+            sidebarBackgroundMobile: "#0D0D0D",
             sidebarTitle: "#F8FAFC",
             sidebarHighlight: "#3B82F6",
             text: "#F8FAFC",

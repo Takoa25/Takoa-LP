@@ -12,7 +12,7 @@ const HamburgerMenu: React.FC = () => {
             {/* Toggle Button - Fixed Top Right */}
             <button
                 onClick={toggleMenu}
-                className="fixed top-6 right-6 z-50 p-3 rounded-full transition-all duration-300 hover:brightness-110 flex flex-col justify-center gap-[5px]"
+                className="fixed top-6 right-6 z-[200] p-3 rounded-full transition-all duration-300 hover:brightness-110 flex flex-col justify-center gap-[5px]"
                 style={{ backgroundColor: CONTENT.theme.colors.card }}
                 aria-label="Menu"
             >
@@ -32,7 +32,7 @@ const HamburgerMenu: React.FC = () => {
 
             {/* Menu Overlay */}
             <div
-                className={`fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500 ${isOpen ? 'opacity-100 pointer-events-auto backdrop-blur-xl' : 'opacity-0 pointer-events-none'
+                className={`fixed inset-0 z-[190] flex flex-col items-center justify-center transition-all duration-500 ${isOpen ? 'opacity-100 pointer-events-auto backdrop-blur-xl' : 'opacity-0 pointer-events-none'
                     }`}
                 style={{ backgroundColor: 'rgba(0, 0, 0, 0.9)' }}
             >
