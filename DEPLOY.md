@@ -35,7 +35,7 @@ git push -u origin main
 4. Configure as opções de build:
    - **Build command:** `npm run build`
    - **Publish directory:** `dist`
-   - **Node version:** 18 ou superior
+   - **Node version:** 20 ou superior
 
 #### Variáveis de Ambiente (se necessário):
 Nenhuma variável de ambiente é necessária no momento.
@@ -125,7 +125,7 @@ git push
 ### Build falha na Netlify:
 - Verifique os logs de build no painel
 - Certifique-se que `package.json` tem todas as dependências
-- Node version deve ser 18+
+- Node version deve ser 20+
 
 ### Headers não aparecem:
 - Verifique se `public/_headers` está na pasta `dist` após build

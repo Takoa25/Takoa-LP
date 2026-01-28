@@ -12,11 +12,8 @@
   base = "/"
 
 [build.environment]
-  # Versão do Node.js
-  NODE_VERSION = "18"
-  
-  # Variáveis de ambiente para otimização
-  NODE_ENV = "production"
+  # Versão do Node.js (Vite 6 requer Node 20+)
+  NODE_VERSION = "20"
 
 # Configuração de redirecionamentos para SPA (Single Page Application)
 # Todas as rotas não encontradas redirecionam para index.html
