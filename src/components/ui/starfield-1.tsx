@@ -171,8 +171,8 @@ const Starfield: React.FC<StarfieldProps> = ({
     };
 
     const update = () => {
-        mouse.current.x = (cursor.current.x - sd.current.x) / easing;
-        mouse.current.y = (cursor.current.y - sd.current.y) / easing;
+        // Removemos a influência do mouse/inclinação na posição X e Y das estrelas
+        // para garantir que o efeito seja fixo e frontal (vindo sempre do centro).
 
         if (sd.current.star.arr.length > 0) {
             sd.current.star.arr = sd.current.star.arr.map(star => {
@@ -180,28 +180,11 @@ const Starfield: React.FC<StarfieldProps> = ({
                 newStar[7] = true;
                 newStar[5] = newStar[3];
                 newStar[6] = newStar[4];
-                newStar[0] += mouse.current.x >> 4;
 
-                if (newStar[0] > sd.current.x << 1) {
-                    newStar[0] -= sd.current.w << 1;
-                    newStar[7] = false;
-                }
-                if (newStar[0] < -sd.current.x << 1) {
-                    newStar[0] += sd.current.w << 1;
-                    newStar[7] = false;
-                }
-
-                newStar[1] += mouse.current.y >> 4;
-                if (newStar[1] > sd.current.y << 1) {
-                    newStar[1] -= sd.current.h << 1;
-                    newStar[7] = false;
-                }
-                if (newStar[1] < -sd.current.y << 1) {
-                    newStar[1] += sd.current.h << 1;
-                    newStar[7] = false;
-                }
-
+                // As estrelas agora se movem apenas no eixo Z (profundidade)
                 newStar[2] -= compSpeed;
+
+                // Se a estrela passar pelo espectador, ela volta para o fundo
                 if (newStar[2] > sd.current.z) {
                     newStar[2] -= sd.current.z;
                     newStar[7] = false;
@@ -211,6 +194,7 @@ const Starfield: React.FC<StarfieldProps> = ({
                     newStar[7] = false;
                 }
 
+                // Projeção 3D para 2D (Sempre expandindo a partir do centro real)
                 newStar[3] = sd.current.x + (newStar[0] / newStar[2]) * ratio;
                 newStar[4] = sd.current.y + (newStar[1] / newStar[2]) * ratio;
                 return newStar;

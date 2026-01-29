@@ -37,16 +37,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isLanded }) => {
           starColor="rgba(255, 255, 255, 0.9)"
           bgColor={CONTENT.theme.colors.sidebarBackgroundMobile}
           /* 
-             Para ajustar a animação no mobile:
-             - quantity: Aumente para ter mais estrelas (ex: 250, 300)
-             - speed: Aumente para as estrelas se moverem mais rápido (ex: 1.0, 1.5)
-             - starColor: Altere o último valor (0.9) para aumentar a opacidade/brilho
+             O efeito agora é fixo e frontal por padrão.
+             - quantity: Quantidade de estrelas
+             - speed: Velocidade de aproximação
           */
           quantity={200}
           speed={0.8}
           clickToWarp={true}
-          tiltAdjust={true}
-          mouseAdjust={true}
+          tiltAdjust={false}
+          mouseAdjust={false}
         />
       </div>
 
