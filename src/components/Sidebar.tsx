@@ -34,10 +34,16 @@ const Sidebar: React.FC<SidebarProps> = ({ isLanded }) => {
       {/* Starfield Background Layer - Visible ONLY on mobile/tablet (< lg) */}
       <div className="absolute inset-0 z-0 lg:hidden user-select-none">
         <Starfield
-          starColor="rgba(255, 255, 255, 0.8)"
+          starColor="rgba(255, 255, 255, 0.9)"
           bgColor={CONTENT.theme.colors.sidebarBackgroundMobile}
-          quantity={160}
-          speed={0.5}
+          /* 
+             Para ajustar a animação no mobile:
+             - quantity: Aumente para ter mais estrelas (ex: 250, 300)
+             - speed: Aumente para as estrelas se moverem mais rápido (ex: 1.0, 1.5)
+             - starColor: Altere o último valor (0.9) para aumentar a opacidade/brilho
+          */
+          quantity={200}
+          speed={0.8}
           clickToWarp={true}
           tiltAdjust={true}
           mouseAdjust={true}

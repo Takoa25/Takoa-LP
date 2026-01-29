@@ -218,6 +218,11 @@ const Starfield: React.FC<StarfieldProps> = ({
         }
     };
 
+    /*
+     Ajuste de Visibilidade (iOS/Retina):
+     Em telas de alta densidade (iPhone/Safari), as linhas podem parecer muito finas.
+     Aumentamos o multiplicador final (aqui de 2 para 3) para dar mais "corpo" às estrelas.
+  */
     const draw = () => {
         const ctx = sd.current.ctx;
         if (!ctx) return;
@@ -234,7 +239,8 @@ const Starfield: React.FC<StarfieldProps> = ({
                 star[6] < sd.current.h &&
                 star[7]
             ) {
-                ctx.lineWidth = (1 - sd.current.star.colorRatio * star[2]) * 2;
+                // Multiplicador aumentado para 3 para melhor visibilidade em telas Retina
+                ctx.lineWidth = (1 - sd.current.star.colorRatio * star[2]) * 3;
                 ctx.beginPath();
                 ctx.moveTo(star[5], star[6]);
                 ctx.lineTo(star[3], star[4]);
