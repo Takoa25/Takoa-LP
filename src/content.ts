@@ -58,8 +58,8 @@ export const CONTENT: Content = {
         {
             id: 'alterna-spvb',
             title: 'Clinica do Dente',
-            link: 'https://clinicadodente.netlify.app/',
-            image: '/card1.gif'
+            link: 'https://opusodontologia.netlify.app/',
+            image: '/v2card1.gif'
         }
     ],
     servicesSection: {
