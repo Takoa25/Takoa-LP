@@ -19,7 +19,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           - No desktop: altere 'md:aspect-video' (padrão 16:9)
           Você também pode usar valores fixos como 'h-[300px]' se preferir.
       */}
-      <div className="relative aspect-[4/3] md:aspect-video w-full overflow-hidden rounded-[2rem] shadow-sm transition-transform duration-500 group-hover:scale-[1.02]">
+      <div className="relative aspect-[4/3] md:aspect-video w-full overflow-hidden rounded-[1rem] shadow-sm transition-transform duration-500 group-hover:scale-[1.02]">
         <img
           src={project.image}
           alt={project.title}

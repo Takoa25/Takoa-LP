@@ -25,7 +25,7 @@ const ServicesSection: React.FC = () => {
                     {CONTENT.servicesSection.items.map((service, index) => (
                         <div
                             key={service.id}
-                            className="group relative border border-transparent rounded-[2.5rem] p-8 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2 animate-fade-up overflow-hidden"
+                            className="group relative border border-transparent rounded-[1rem] p-8 lg:p-12 transition-all duration-500 hover:shadow-2xl hover:shadow-black/5 hover:-translate-y-2 animate-fade-up overflow-hidden"
                             style={{
                                 animationDelay: `${index * 150}ms`,
                                 backgroundColor: CONTENT.theme.colors.card

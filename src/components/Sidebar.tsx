@@ -49,6 +49,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isLanded }) => {
         />
       </div>
 
+      {/* Vignette Overlay (Lighting) - Visible ONLY on desktop (>= lg) */}
+      {/* 
+          EFEITO DE LUZ (VIGNETTE):
+          Cria um ponto de luz sutil no topo para dar profundidade à cor sólida.
+          Ajuste a intensidade diretamente no arquivo index.css (.sidebar-vignette).
+      */}
+      <div className="absolute inset-0 z-0 hidden lg:block pointer-events-none sidebar-vignette" />
+
       {/* Container Superior: Logo - z-index higher than background */}
       <div className="flex-none z-10">
         <a href="/" className="block w-[clamp(110px,8vw,150px)]">
