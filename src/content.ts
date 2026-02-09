@@ -53,13 +53,19 @@ export const CONTENT: Content = {
             "aumenta suas vendas."
         ]
     },
-    projectsTitle: "Último projeto realizado",
+    projectsTitle: "Últimos projetos realizados",
     projects: [
         {
-            id: 'alterna-spvb',
+            id: 'projeto-01',
             title: 'Clinica do Dente',
             link: 'https://opusodontologia.netlify.app/',
             image: '/v2card1.gif'
+        },
+        {
+            id: 'projeto-02',
+            title: 'Dra. Camila Marques',
+            link: 'https://camilamarques.netlify.app/',
+            image: '/v1card2.gif'
         }
     ],
     servicesSection: {
