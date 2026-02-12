@@ -55,12 +55,18 @@
     content="Transforme sua clínica com um site profissional, seguro e de alta conversão. Especialistas em web design e adequação LGPD." />
   <meta property="twitter:image" content="https://takoadigital.com/preview.webp" />
 
+  <!-- Performance: Preconnect para domínios críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.clarity.ms">
+  <link rel="dns-prefetch" href="https://c.bing.com">
+
   <!-- 
     FONTES DO SITE:
     Para testar novas fontes, adicione-as aqui no link do Google Fonts.
     Depois, altere o valor de theme.fonts.heading no arquivo src/content.ts
+    
+    font-display=swap: Evita FOIT (Flash of Invisible Text), melhorando FCP e LCP
   -->
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Ubuntu:wght@300;400;500;700&family=Russo+One&family=Averia+Serif+Libre:wght@300;400;700&display=swap"
