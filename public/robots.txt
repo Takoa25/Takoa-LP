@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://takoadigital.com/sitemap.xml
+Sitemap: https://takoadigital.com/llms.txt
