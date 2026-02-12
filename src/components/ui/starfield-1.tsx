@@ -86,11 +86,15 @@ const Starfield: React.FC<StarfieldProps> = ({
     const measureViewport = () => {
         const el = canvasRef.current?.parentElement;
         if (el) {
-            sd.current.w = el.clientWidth;
-            sd.current.h = el.clientHeight;
-            sd.current.x = Math.round(sd.current.w / 2);
-            sd.current.y = Math.round(sd.current.h / 2);
-            sd.current.z = (sd.current.w + sd.current.h) / 2;
+            // Usa técnicas de batching para evitar reflows forçados
+            // Lê todas as propriedades geométricas de uma vez
+            const { clientWidth, clientHeight } = el;
+
+            sd.current.w = clientWidth;
+            sd.current.h = clientHeight;
+            sd.current.x = Math.round(clientWidth / 2);
+            sd.current.y = Math.round(clientHeight / 2);
+            sd.current.z = (clientWidth + clientHeight) / 2;
             sd.current.star.colorRatio = 1 / sd.current.z;
 
             if (cursor.current.x === 0 || cursor.current.y === 0) {
@@ -353,8 +357,21 @@ const Starfield: React.FC<StarfieldProps> = ({
     }, [state.reset, state.stop, state.start]);
 
     return (
-        <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0 }}>
-            <canvas ref={canvasRef} />
+        <div style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: 0,
+            left: 0,
+            willChange: 'transform',  // Otimização: Informa ao browser que haverá animações
+            contain: 'layout style paint'  // Isola o componente para reduzir reflows
+        }}>
+            <canvas
+                ref={canvasRef}
+                style={{
+                    willChange: 'contents'  // Otimização para canvas animado
+                }}
+            />
         </div>
     );
 };

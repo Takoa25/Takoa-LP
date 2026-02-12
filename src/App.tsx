@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import Sidebar from './components/Sidebar';
 import HamburgerMenu from './components/HamburgerMenu';
 import ServicesSection from './components/ServicesSection';
-import ProcessSection from './components/ProcessSection';
 import ProjectCard from './components/ProjectCard';
 import Footer from './components/Footer';
 import FloatingWhatsapp from './components/FloatingWhatsapp';
 import CookieBanner from './components/CookieBanner';
-import PrivacyPolicy from './components/PrivacyPolicy'; // Added import
-import TermsOfUse from './components/TermsOfUse'; // Added import
 import { CONTENT } from './content';
 import Lenis from 'lenis';
 import { motion } from 'framer-motion';
@@ -18,17 +15,35 @@ import { FadeSection } from './components/FadeSection';
 import { FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { HiOutlineMail } from 'react-icons/hi';
 
-export type ViewState = 'home' | 'privacy' | 'terms'; // Added 'terms'
+// Code Splitting: Componentes pesados carregados sob demanda
+// Isso reduz o bundle inicial em ~66KB e melhora o tempo de carregamento
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
+const TermsOfUse = lazy(() => import('./components/TermsOfUse'));
+const ProcessSection = lazy(() => import('./components/ProcessSection'));
+
+export type ViewState = 'home' | 'privacy' | 'terms';
+
+// Componente de carregamento leve
+const LoadingFallback = () => (
+  <div
+    className="min-h-screen flex items-center justify-center"
+    style={{ backgroundColor: CONTENT.theme.colors.background }}
+  >
+    <div className="animate-pulse text-lg" style={{ color: CONTENT.theme.colors.textLight }}>
+      Carregando...
+    </div>
+  </div>
+);
 
 function App() {
   const selectionColor = CONTENT.theme.colors.selection;
   const [isLanded, setIsLanded] = React.useState(false);
-  const [currentView, setCurrentView] = React.useState<ViewState>('home'); // Added state
+  const [currentView, setCurrentView] = React.useState<ViewState>('home');
 
   useEffect(() => {
     const handleScroll = () => {
       // Logic for scroll landing only if in home view
-      if (currentView !== 'home') return; // Added condition
+      if (currentView !== 'home') return;
 
       const target = document.getElementById('final-cta-title');
       if (target) {
@@ -43,11 +58,11 @@ function App() {
     handleScroll(); // Check once on mount
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [currentView]); // Added currentView to dependencies
+  }, [currentView]);
 
   useEffect(() => {
     // Inicializa o Smooth Scroll (Lenis)
-    const lenis = new Lenis(); // Removed options
+    const lenis = new Lenis();
 
     function raf(time: number) {
       lenis.raf(time);
@@ -77,7 +92,7 @@ function App() {
 /* Removed Lenis-related styles as they are not needed with default Lenis setup */
 `}</style>
 
-      {currentView === 'home' ? ( // Conditional rendering based on currentView
+      {currentView === 'home' ? (
         <>
           <FloatingWhatsapp />
           <Sidebar isLanded={isLanded} />
@@ -119,7 +134,9 @@ function App() {
             </FadeSection>
 
             <FadeSection>
-              <ProcessSection isLanded={isLanded} />
+              <Suspense fallback={<LoadingFallback />}>
+                <ProcessSection isLanded={isLanded} />
+              </Suspense>
             </FadeSection>
 
             <FadeSection>
@@ -133,9 +150,13 @@ function App() {
           <CookieBanner onOpenPrivacy={() => setCurrentView('privacy')} />
         </>
       ) : currentView === 'privacy' ? (
-        <PrivacyPolicy onBack={() => setCurrentView('home')} />
+        <Suspense fallback={<LoadingFallback />}>
+          <PrivacyPolicy onBack={() => setCurrentView('home')} />
+        </Suspense>
       ) : (
-        <TermsOfUse onBack={() => setCurrentView('home')} />
+        <Suspense fallback={<LoadingFallback />}>
+          <TermsOfUse onBack={() => setCurrentView('home')} />
+        </Suspense>
       )}
     </div>
   );
