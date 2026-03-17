@@ -6,6 +6,17 @@ interface TakoaLogoProps {
 }
 
 const TakoaLogo: React.FC<TakoaLogoProps> = ({ className = '' }) => {
+    if (CONTENT.brand.logoUrl) {
+        return (
+            <img
+                src={CONTENT.brand.logoUrl}
+                alt={CONTENT.brand.logoAlt}
+                className={className}
+                style={{ display: 'block' }}
+            />
+        );
+    }
+
     return (
         <svg
             viewBox="0 0 200 75"

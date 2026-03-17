@@ -36,7 +36,7 @@ export const CONTENT: Content = {
     },
     brand: {
         name: "Takoa Digital",
-        logoUrl: "",
+        logoUrl: "/logo.png",
         logoAlt: "Takoa Digital Logo"
     },
     navigation: [
